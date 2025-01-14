@@ -177,3 +177,79 @@ header#Header .header_list .user_control_list{
   gap: 14px;
 }
 /* ================Header=============End */
+
+
+/* =================Main======================= */
+/* =======HeroSection======= */
+#hero_section .container_size .container_wrapper{
+  display: flex;
+  /* gap: 40px; */
+  justify-content: space-between;
+  position: relative;
+}
+#hero_section .content_wrapper{
+  width: 50%;
+}
+
+#hero_section .content_wrapper h1{
+  font-size: 64px;
+  font-weight: bold;
+  font-family: 'integral';
+  margin-bottom: 32px;
+}
+#hero_section .content_wrapper p{
+  color: rgba(0,0,0,.6);
+  margin-bottom: 32px;
+}
+
+#hero_section .content_wrapper .btn_shop{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 67px;
+  border-radius: 50px;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  transition: .3s;
+}
+#hero_section .content_wrapper .btn_shop:hover{
+  background: rgba(0,0,0,.8);
+}
+
+#hero_section .content_wrapper .footer_list{
+  display: flex;
+  gap: 64px;
+  flex-flow: row wrap;
+  margin-top: 48px;
+}
+#hero_section .content_wrapper .footer_list strong{
+  font-size: 40px;
+  font-weight: bold;
+}
+#hero_section .content_wrapper .footer_list p{
+  color: rgba(0,0,0,.6);
+  padding: 0;
+  margin: 0;
+}
+
+#hero_section .image_wrapper{
+  position: relative;
+}
+#hero_section .image_wrapper .hero_img{
+  position: absolute;
+  top: 0;
+  right: -100px;
+  z-index: -1;
+}
+#hero_section .services_list{
+  display: flex;
+  flex-flow: row wrap;
+  gap: 106px;
+  padding: 43px 0;
+  background: #000000;
+  justify-content: center;
+  margin-top: 100px;
+}
+/* =======HeroSection=======End */
+/* =================Main=======================End */
