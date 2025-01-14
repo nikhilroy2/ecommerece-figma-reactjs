@@ -4,12 +4,39 @@ import ArrowDownIcon from "../assets/icons/arrow_down.svg";
 import SearchIcon from "../assets/icons/search.svg";
 import CartIcon from "../assets/icons/cart.svg";
 import ProfileIcon from "../assets/icons/profile.svg";
-
 import Dropdown from "../components/_dropdown";
+import "./header.css";
+
 export default function Header() {
   const [showAlert, setShowAlert] = useState(true);
   const [displayAlert, setDisplayAlert] = useState(true);
   const dropdown_btn = useRef();
+  const [shopMenuDropdown, setShopMenuDropdown] = useState(false);
+  const [cartMenuDropdown, setCartMenuDropdown] = useState(false);
+  const [profileMenuDropdown, setProfileMenuDropdown] = useState(false);
+
+  const shop_dropdown_list = [
+    { name: "Shop All" },
+    { name: "Featured" },
+    { name: "Bestsellers" },
+    { name: "New In" },
+    { name: "Sale" },
+  ];
+
+  const cart_dropdown_list = [
+    { name: "Cart 1" },
+    { name: "Cart 2" },
+    { name: "Cart 3" },
+    { name: "Cart 4" },
+  ];
+
+  const profile_dropdown_list = [
+    { name: "Profile 1" },
+    { name: "Profile 2" },
+    { name: "Profile 3" },
+    { name: "Profile 4" },
+  ];
+
   const closeHeaderAlert = () => {
     setShowAlert(false);
     setTimeout(() => {
@@ -17,80 +44,19 @@ export default function Header() {
     }, 300);
   };
 
-  // for shop item======
-  const [shopMenuDropdown, setShopMenuDropdown] = useState(false);
-  const shop_dropdown_list = [
-    {
-      name: "Shop 1",
-      action: "",
-    },
-    {
-      name: "Shop 2",
-      action: "",
-    },
-    {
-      name: "Shop 3",
-      action: "",
-    },
-    {
-      name: "Shop 4",
-      action: "",
-    },
-  ];
-  // for shop item======End
-
-  // for cart item======
-  const [cartMenuDropdown, setCartMenuDropdown] = useState(false);
-  const cart_dropdown_list = [
-    {
-      name: "Cart 1",
-      action: "",
-    },
-    {
-      name: "Cart 2",
-      action: "",
-    },
-    {
-      name: "Cart 3",
-      action: "",
-    },
-    {
-      name: "Cart 4",
-      action: "",
-    },
-  ];
-  // for cart item======End
-
-  // for profile item======
-  const [profileMenuDropdown, setProfileMenuDropdown] = useState(false);
-  const profile_dropdown_list = [
-    {
-      name: "Profile 1",
-      action: "",
-    },
-    {
-      name: "Profile 2",
-      action: "",
-    },
-    {
-      name: "Profile 3",
-      action: "",
-    },
-    {
-      name: "Profile 4",
-      action: "",
-    },
-  ];
-  // for profile item======End
-
   return (
-    <header id="Header">
+    <header className="header" id="Header">
       {displayAlert && (
         <div className={`alert_dark ${!showAlert ? "hide" : ""}`}>
-          <div className="container_size">
-            Sign up and get 20% off to your first order.{" "}
-            <a href="#">Sign Up Now</a>
-            <button className="btn_close" onClick={closeHeaderAlert}>
+          <div className="alert_container">
+            <p>
+              Sign up and get 20% off to your first order.{" "}
+              <a href="#">Sign Up Now</a>
+            </p>
+            <button
+              className="btn_close"
+              onClick={closeHeaderAlert}
+            >
               <img src={TimesIcon} alt="" />
             </button>
           </div>
@@ -116,16 +82,22 @@ export default function Header() {
                     </>
                   }
                   dropdown_list={shop_dropdown_list}
-                ></Dropdown>
+                />
               </li>
               <li>
-                <a href="#">On Sale</a>
+                <a href="#" className="menu_item">
+                  On Sale
+                </a>
               </li>
               <li>
-                <a href="#">New Arrivals</a>
+                <a href="#" className="menu_item">
+                  New Arrivals
+                </a>
               </li>
               <li>
-                <a href="#">Brands</a>
+                <a href="#" className="menu_item">
+                  Brands
+                </a>
               </li>
             </ul>
           </li>
@@ -139,33 +111,23 @@ export default function Header() {
               <img src={SearchIcon} className="input_icon" alt="" />
             </div>
           </li>
-
           <li>
             <ul className="user_control_list">
               <li>
                 <Dropdown
                   menuDropdown={cartMenuDropdown}
                   setMenuDropdown={setCartMenuDropdown}
-                  dropdown_name={
-                    <>
-                      <img src={CartIcon} alt="" />
-                    </>
-                  }
+                  dropdown_name={<img src={CartIcon} alt="" />}
                   dropdown_list={cart_dropdown_list}
-                ></Dropdown>
+                />
               </li>
-
               <li>
                 <Dropdown
                   menuDropdown={profileMenuDropdown}
                   setMenuDropdown={setProfileMenuDropdown}
-                  dropdown_name={
-                    <>
-                      <img src={ProfileIcon} alt="" />
-                    </>
-                  }
+                  dropdown_name={<img src={ProfileIcon} alt="" />}
                   dropdown_list={profile_dropdown_list}
-                ></Dropdown>
+                />
               </li>
             </ul>
           </li>

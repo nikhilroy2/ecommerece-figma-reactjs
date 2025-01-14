@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
+import "./dropdown.css";
 
 export default function Dropdown({
   menuDropdown,
@@ -6,22 +7,28 @@ export default function Dropdown({
   dropdown_name,
   dropdown_list,
 }) {
-  const dropdown_btn = useRef();
+  const dropdownRef = useRef(null);
 
-  // useEffect(() => {
-  //   window.addEventListener("click", function (event) {
-  //     if (event.target != dropdown_btn.current) {
-  //       setMenuDropdown(false);
-  //     }
-  //   });
-  // }, []);
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setMenuDropdown(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [setMenuDropdown]);
+
+  const handleToggle = () => {
+    setMenuDropdown(!menuDropdown);
+  };
+
   return (
-    <div className="dropdown">
-      <button
-        className="dropdown_btn"
-        ref={dropdown_btn}
-        onClick={() => setMenuDropdown(!menuDropdown)}
-      >
+    <div className="dropdown" ref={dropdownRef}>
+      <button className="dropdown_btn" onClick={handleToggle}>
         {dropdown_name}
       </button>
       <ul className={`dropdown_menu ${menuDropdown ? "show" : ""}`}>
